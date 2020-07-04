@@ -2,8 +2,16 @@ RSpec.describe P5 do
   before (:all) do 
 	  @carne_vaca = Alimento.new("carne de vaca", 21.1, 0.0, 3.1, 50.0, 164.0)
 	  
+	  @n1 = Node.new("Bencomo", nil, nil)
+	  @n2 = Node.new("Karmele", nil, nil)
+	
+	  @lista1 = List.new
+
+	  @lista1.push(@n1)
+	  @lista1.push(@n2)
+
   end
-  context "p6" do 
+  context "Alimento" do 
 	  it "Nombre para el alimento" do
 		  puts "De la carne de vaca"
 		  expect(@carne_vaca.nombre).to eq("carne de vaca")
@@ -25,6 +33,17 @@ RSpec.describe P5 do
 	  end
 	  it "Valor energético" do 
 		  expect(@carne_vaca.val_energetico).not_to eq(nil)
+	  end
+  end
+
+  context "Lista" do
+	  it "Existe un nodo con sus datos, su siguiente y su previo" do
+		  puts "Su dato" 
+		  expect(@lista1.head.value).to eq("Karmele")
+		  puts "Su siguiente"
+		  expect(@lista1.head.next).not_to eq(nil)
+		  puts "Su anterior"
+		  expect(@lista1.head.prev).to eq(nil)
 	  end
   end
 end
