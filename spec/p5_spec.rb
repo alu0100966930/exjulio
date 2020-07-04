@@ -4,9 +4,11 @@ RSpec.describe P5 do
 	  
 	  @n1 = Node.new("Bencomo", nil, nil)
 	  @n2 = Node.new("Karmele", nil, nil)
-	
-	  @lista1 = List.new
+	  @n = Node.new("Martin", nil, nil)
 
+	  @lista1 = List.new
+	  
+	  @lista1.push(@n)
 	  @lista1.push(@n1)
 	  @lista1.push(@n2)
 
@@ -44,6 +46,23 @@ RSpec.describe P5 do
 		  expect(@lista1.head.next).not_to eq(nil)
 		  puts "Su anterior"
 		  expect(@lista1.head.prev).to eq(nil)
+	  end
+	  it "Lista con cabeza y cola" do
+		  puts "Cabeza"
+		  expect(@lista1.head).not_to eq(nil)
+		  puts "Cola"
+		  expect(@lista1.tail).not_to eq(nil)
+	  end
+	  it "Se pueden insertar 1 y más elementos" do
+		  expect(@lista1.size).to eq(3)
+	  end
+	  it "Se extrae el primer elemento de la lista" do
+		  @lista1.pop_head
+		  expect(@lista1.size).to eq(2)
+	  end
+	  it "Se extrae el último elemento de la lista" do 
+		  @lista1.pop_tail
+		  expect(@lista1.size).to eq(1)
 	  end
   end
 end
