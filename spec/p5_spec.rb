@@ -1,14 +1,18 @@
 RSpec.describe P5 do
   before (:all) do 
-	  @hamburguesa = Alimento.new("hamburguesa", 1335, 2.9, 11, 9, 4160, 1470. 1070.53, 4.51)
-	  @lasaña = Alimento.new("lasaña", 550, 3.0, 7.1, 8.6, 2170, 660, 361.63, 0.81)
+	  @carne_vaca = Alimento.new("carne de vaca", 21.1, 0.0, 3.1, 50.0, 164.0)
+	  
   end
-  context "p5" do 
-	  it "huella nutricional" do
-		  puts "De la hamburguesa"
-		  expect(@hamburguesa.huella_nutricional).to eq(2.63)
-		  puts "De la lasaña"
-		  expect(@lasaña.huella_nutricional).to eq(1.25)
+  context "p6" do 
+	  it "Nombre para el alimento" do
+		  puts "De la carne de vaca"
+		  expect(@carne_vaca.nombre).to eq("carne de vaca")
+	  end
+	  it "Gases de efecto invernadero" do
+		  expect(@carne_vaca.gei).to eq(50.0)
+	  end
+	  it "Terreno utilizado al año" do
+		  expect(@carne_vaca.t).to eq(164.0)
 	  end
   end
 end
