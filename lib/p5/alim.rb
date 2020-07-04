@@ -10,39 +10,22 @@ class Alimento
 		@t = terreno
 
 	end
-
-	def impacto(x,bajo,alto)
-		if(x<bajo)
-			@impacto = 1.0
-		elsif (x>alto)
-			@impacto = 3.0
-		else
-			@impacto = 2.0
-		end
-
+	#############PRACTICA 6########################
+	
+	def get_name
+		@nombre
 	end
 
-	def impacto2(x,bajo,alto)
-		if(x>bajo)
-			@impacto = 1.0
-		elsif (x<alto)
-			@impacto = 3.0
-		else
-			@impacto = 2.0
-		end
-
+	def get_gei
+		@gei
 	end
 
-	def hsalud(ie, is, iags, iff)
-		(ie + is + iags + iff)/4
+	def get_t
+		@t
 	end
 
-	def hambiental(ihm, ihc, ihh, it)
-		(ihm + ihc + ihh + it)/4
-	end
-
-	def hnutricional(hsal, hamb)
-		(hsal + hamb)/2
+	def val_energetico
+		(@ch*4)+(@l*9)+(@p*4)
 	end
 
 	
