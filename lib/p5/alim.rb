@@ -1,16 +1,13 @@
 class Alimento
 
-	attr_accessor :nombre, :energia, :sal, :ags, :fibra, :hmaterial, :hcarbono, :hhidrica, :terreno
-	def initialize(n, e, s, a, f, hm, hc, hh, t)
+	attr_accessor :nombre, :p, :ch, :l, :gei, :t
+	def initialize(n, proteinas, carbohidratos, lipidos, geis, terreno)
 		@nombre = n
-		@energia = e
-		@sal = s
-		@ags = a
-		@fibra = f
-		@hmaterial = hm
-		@hcarbono = hc
-		@hhidrica = hh
-		@terreno = t
+		@p = proteinas
+		@ch = carbohidratos
+		@l = lipidos
+		@gei = geis
+		@t = terreno
 
 	end
 
@@ -48,5 +45,5 @@ class Alimento
 		(hsal + hamb)/2
 	end
 
-
+	
 end
