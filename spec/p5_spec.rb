@@ -27,6 +27,12 @@ RSpec.describe P5 do
 	  @española.push(@esp1)
 	  @española.push(@esp2)
 	  @española.push(@esp3)
+
+	  @al = [@carne_vaca, @lentejas, @cerveza]
+	  @gr = [250, 200, 225]
+	  
+	  @primero = Plato.new("primero", @al, @gr)
+
   end
   context "Alimento" do 
 	  it "Nombre para el alimento" do
@@ -50,6 +56,9 @@ RSpec.describe P5 do
 	  end
 	  it "Valor energético" do 
 		  expect(@carne_vaca.val_energetico).not_to eq(nil)
+	  end
+	  it "Comparamos el gei de la carne de vaca y la cerveza" do
+		  expect(@carne_vaca.gei > @cerveza.gei).to eq(true)
 	  end
   end
 
@@ -83,6 +92,27 @@ RSpec.describe P5 do
 		  suma = 0.0
 		  @española.collect{|x| suma += x.gei}
 		  expect(suma.to_i).to eq(38)
+	  end
+  end
+
+  context "Plato" do
+	  it "Nombre del plato" do
+		  expect(@primero.n_plato).to eq("primero")
+	  end
+	  it "Conjunto de alimentos" do 
+		  expect(@primero.al.collect{|x| x.nombre}).to eq(["carne de vaca", "lentejas", "cerveza"])
+	  end
+	  it "Conjunro de cantidades" do 
+		  expect(@primero.gr.collect{|x| x}).to eq([250, 200, 225])  
+	  end
+	  it "Porcentaje de proteínas" do
+		  expect(@primero.pp).to eq(40)
+	  end
+	  it "Porcentaje de lípidos" do
+		  expect(@primero.pl).to eq(40)
+	  end
+	  it "Porcentaje de hidratos de carbono" do
+		  expect(@primero.ph).to eq(20)
 	  end
   end
 end

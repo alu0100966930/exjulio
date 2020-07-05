@@ -1,5 +1,8 @@
 class Alimento
 
+	include Comparable
+	include Enumerable
+
 	attr_accessor :nombre, :p, :ch, :l, :gei, :t
 	def initialize(n, proteinas, carbohidratos, lipidos, geis, terreno)
 		@nombre = n
@@ -26,7 +29,14 @@ class Alimento
 
 	def val_energetico
 		(@ch*4)+(@l*9)+(@p*4)
-	end	
+	end
+	def <=>(other)
+		@nombre <=> other.nombre
+	end
+	def each
+		@nombre
+	end
+
 end
 
 Node = Struct.new(:value, :next, :prev)
@@ -82,6 +92,15 @@ class List
 			n = n.next
 		end
 	end
+end	
 
+class Plato
 
-end		
+	attr_accessor :n_plato, :al, :gr
+
+	def initialize(n, a, g)
+		@n_plato = n
+		@al = a
+		@gr = g
+	end
+end
