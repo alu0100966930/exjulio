@@ -31,6 +31,7 @@ end
 
 Node = Struct.new(:value, :next, :prev)
 class List
+	include Enumerable
 
 	attr_accessor :value, :next, :prev, :head, :tail, :size
 	def initialize
@@ -74,5 +75,13 @@ class List
 			return drop
 		end
 	end
+	def each
+		n = @head
+		while (n != nil)
+			yield n.value
+			n = n.next
+		end
+	end
+
 
 end		

@@ -1,10 +1,16 @@
 RSpec.describe P5 do
   before (:all) do 
 	  @carne_vaca = Alimento.new("carne de vaca", 21.1, 0.0, 3.1, 50.0, 164.0)
-	  
+	  @carne_cordero = Alimento.new("carne de cordero", 18.0, 0.0, 17.0, 20.0, 185.0)
+	  @camarones = Alimento.new("camarones", 17.6, 1.5, 0.6, 18.0, 2.0)
+	  @cerveza = Alimento.new("cerveza", 0.5, 3.6, 0.0, 0.24, 0.22)
+	  @lentejas = Alimento.new("lentejas", 23.5, 52.0, 1.4, 0.4, 3.4)
+	  @huevos = Alimento.new("huevos", 13.0, 1.1, 11.0, 4.2, 5.7)
+
 	  @n1 = Node.new("Bencomo", nil, nil)
 	  @n2 = Node.new("Karmele", nil, nil)
 	  @n = Node.new("Martin", nil, nil)
+
 
 	  @lista1 = List.new
 	  
@@ -12,6 +18,15 @@ RSpec.describe P5 do
 	  @lista1.push(@n1)
 	  @lista1.push(@n2)
 
+	  @esp1 = Node.new(@carne_cordero, nil, nil)
+	  @esp2 = Node.new(@camarones, nil, nil)
+	  @esp3 = Node.new(@cerveza, nil, nil)
+
+	  @española = List.new
+
+	  @española.push(@esp1)
+	  @española.push(@esp2)
+	  @española.push(@esp3)
   end
   context "Alimento" do 
 	  it "Nombre para el alimento" do
@@ -63,6 +78,11 @@ RSpec.describe P5 do
 	  it "Se extrae el último elemento de la lista" do 
 		  @lista1.pop_tail
 		  expect(@lista1.size).to eq(1)
+	  end
+	  it "Emisiones diarias del gei" do 
+		  suma = 0.0
+		  @española.collect{|x| suma += x.gei}
+		  expect(suma.to_i).to eq(38)
 	  end
   end
 end
