@@ -27,6 +27,18 @@ class Alimento
 		@t
 	end
 
+	def get_p
+		@p
+	end
+
+	def get_l
+		@l
+	end
+
+	def get_h
+		@ch
+	end
+
 	def val_energetico
 		(@ch*4)+(@l*9)+(@p*4)
 	end
@@ -95,6 +107,7 @@ class List
 end	
 
 class Plato
+	include Enumerable
 
 	attr_accessor :n_plato, :al, :gr
 
@@ -102,5 +115,85 @@ class Plato
 		@n_plato = n
 		@al = a
 		@gr = g
+	end
+	
+	def pp
+		i = 0
+		j = 0
+		p = 0
+		
+		@gr.each do |x| 
+			gramos = x
+			i += 1
+			@al.each do |y|
+				j += 1
+				if(i ==j)
+					p += gramos*y.get_p/100
+				end
+			end
+			j=0
+		end
+		total = 0
+		@gr.each do |x|
+			total += x
+		end
+		p = (p*100)/total
+		return p
+	end
+
+	def pl
+		i = 0
+		j = 0
+		l = 0
+
+		@gr.each do |x|
+			gramos = x
+			i += 1
+			@al.each do |y|
+				j += 1
+				if(i == j)
+					l += gramos*y.get_l/100
+				end
+			end
+			j = 0
+		end
+		total = 0
+		@gr.each do |x|
+			total += x
+		end
+		l = (l*100)/total
+		return l
+	end
+
+	def ph
+		i = 0
+		j = 0
+		h = 0
+
+		@gr.each do |x|
+			gramos = x
+			i += 1
+			@al.each do |y|
+				j += 1
+				if(i == j)
+					h += gramos*y.get_h/100
+				end
+			end
+			j = 0
+		end
+		total = 0
+		@gr.each do |x|
+			total += x
+		end
+		h = (h*100)/total
+		return h
+	end
+
+	def each
+		val = 0
+		@al.each do |x|
+			val = x.val_energetico
+		end
+		return val
 	end
 end

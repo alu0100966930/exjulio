@@ -106,13 +106,19 @@ RSpec.describe P5 do
 		  expect(@primero.gr.collect{|x| x}).to eq([250, 200, 225])  
 	  end
 	  it "Porcentaje de proteínas" do
-		  expect(@primero.pp).to eq(40)
+		  expect(@primero.pp.to_i).to eq(14)
 	  end
 	  it "Porcentaje de lípidos" do
-		  expect(@primero.pl).to eq(40)
+		  expect(@primero.pl.to_i).to eq(1)
 	  end
 	  it "Porcentaje de hidratos de carbono" do
-		  expect(@primero.ph).to eq(20)
+		  expect(@primero.ph.to_i).to eq(16)
+	  end
+
+	  it "El valor calórico del conjunto de alimentos" do 
+		  sum = 0
+		  @primero.collect{|x| suma += x.al}
+		  expect(sum.to_i).to eq(25)
 	  end
   end
 end
