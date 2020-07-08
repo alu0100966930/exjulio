@@ -1,9 +1,12 @@
+#clase alimento
 class Alimento
 
 	include Comparable
 	include Enumerable
 
 	attr_accessor :nombre, :p, :ch, :l, :gei, :t
+	
+	#método initialize
 	def initialize(n, proteinas, carbohidratos, lipidos, geis, terreno)
 		@nombre = n
 		@p = proteinas
@@ -14,54 +17,59 @@ class Alimento
 
 	end
 	#############PRACTICA 6########################
-	
+	#get_name
 	def get_name
 		@nombre
 	end
-
+	#get_gei
 	def get_gei
 		@gei
 	end
-
+	#get_t
 	def get_t
 		@t
 	end
-
+	#m get_p
 	def get_p
 		@p
 	end
-
+	#m get_l
 	def get_l
 		@l
 	end
-
+	#m get_h
 	def get_h
 		@ch
 	end
-
+	#m val_energetico
 	def val_energetico
 		(@ch*4)+(@l*9)+(@p*4)
 	end
+	#m comparable
 	def <=>(other)
 		@nombre <=> other.nombre
 	end
+	#m pal each enuerable
 	def each
 		@nombre
 	end
 
 end
-
+#estructura del nodo
 Node = Struct.new(:value, :next, :prev)
+#clase lista
 class List
 	include Enumerable
 
 	attr_accessor :value, :next, :prev, :head, :tail, :size
+	
+	#initialize
 	def initialize
 		@head = Node.new
 		@tail = Node.new
 		@size = 0
 	end
-
+	#me push
 	def push(n)
 		if(@size == 0)
 			@tail = n
@@ -74,7 +82,7 @@ class List
 		n.prev = nil
 		@size = @size + 1
 	end
-
+	#M pop_head
 	def pop_head
 		if(@size == 0)
 			puts "Lista vacía"
@@ -86,6 +94,7 @@ class List
 			return drop
 		end
 	end
+	#m pop_tail
 	def pop_tail
 		if(@size == 0)
 			puts "Lista vacía"
@@ -97,6 +106,7 @@ class List
 			return drop
 		end
 	end
+	#each pal enumerable
 	def each
 		n = @head
 		while (n != nil)
@@ -105,18 +115,18 @@ class List
 		end
 	end
 end	
-
+#clase plato
 class Plato
 	include Enumerable
 
 	attr_accessor :n_plato, :al, :gr
-
+	#intialddf
 	def initialize(n, a, g)
 		@n_plato = n
 		@al = a
 		@gr = g
 	end
-	
+	#p prot
 	def pp
 		i = 0
 		j = 0
@@ -140,7 +150,7 @@ class Plato
 		p = (p*100)/total
 		return p
 	end
-
+	# p lip
 	def pl
 		i = 0
 		j = 0
@@ -164,7 +174,7 @@ class Plato
 		l = (l*100)/total
 		return l
 	end
-
+	#p hid
 	def ph
 		i = 0
 		j = 0
@@ -188,7 +198,7 @@ class Plato
 		h = (h*100)/total
 		return h
 	end
-
+	#each otro pa, enumerbale
 	def each
 		val = 0
 		@al.each do |x|
